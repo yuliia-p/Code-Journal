@@ -23,5 +23,3 @@ function formSubmit(event) {
   elEntryForm.reset();
 
 }
-
-// var entries = [];

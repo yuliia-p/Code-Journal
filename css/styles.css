@@ -14,7 +14,7 @@ h1 {
 }
 
 h2 {
-  padding: 10px 0;
+  padding: 20px 0;
   font-weight: 100;
   font-size: 1.1rem;
   margin: 0;
@@ -36,10 +36,6 @@ label {
 
 .photo {
   width: 100%;
-
-  /* object-fit: cover; */
-
-  /* max-height: 300px; */
 }
 
 .input-slyle {
@@ -55,9 +51,10 @@ label {
 button {
   text-transform: uppercase;
   border-radius: 2px;
-  border-color: rgb(91, 6, 210);
-  padding: 3px 10px;
+  border: none;
+  padding: 10px 20px;
   margin-top: 10px;
+  letter-spacing: 1px;
 }
 
 .button {
