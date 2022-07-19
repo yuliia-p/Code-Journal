@@ -3,10 +3,6 @@ body {
   background-color: rgb(244, 244, 244);
 }
 
-.container {
-  width: 100%;
-}
-
 h1 {
   font-weight: bold;
   font-size: 1.5rem;
@@ -64,9 +60,5 @@ button {
 @media only screen and (min-width: 768px) {
   .flex {
     display: flex;
-  }
-
-  .column-half {
-    flex-basis: 50%;
   }
 }
