@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(244, 244, 244);
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+h2 {
+  padding: 20px 0;
+  font-weight: 100;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+label,
+input,
+textarea,
+img {
+  display: block;
+  width: 100%;
+}
+
+label {
+  margin: 10px 0 3px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.photo {
+  width: 100%;
+}
+
+.input-slyle {
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.white-font-style {
+  color: white;
+  background-color: rgb(91, 6, 210);
+}
+
+button {
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.button {
+  text-align: right;
+}
+
+@media only screen and (min-width: 768px) {
+  .flex {
+    display: flex;
+  }
+}

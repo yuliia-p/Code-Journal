@@ -16,9 +16,65 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
+  <header class="white-font-style">
+    <div class="container">
+      <div class="row">
+        <div class="column-full">
+          <h2>Code Journal</h2>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container flex">
+      <div data-view="entry-form" id="entry-form">
+        <form id="journal-form">
+          <div class="row">
+            <div class="column-full">
+              <h1>New Entry</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-half">
+              <img class="photo" src="/images/placeholder-image-square.jpg"
+                   alt=" placeholder-image-square">
+            </div>
+            <div class="column-half">
+              <label for="title-input">Title</label>
+              <input
+                required
+                name="title"
+                type="text"
+                id="title-input"
+                class="input-slyle">
+              <label for="photo-url">Photo URL</label>
+              <input
+                required
+                name="url"
+                type="url"
+                id="photo-url"
+                class="input-slyle">
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <label for="journal-input">Notes</label>
+              <textarea
+              required
+              rows="5"
+              name="notes"
+              id="journal-input"
+              class="input-slyle"></textarea>
+            </div>
+          </div>
+          <div class="form-actions button row">
+            <div class="column-full">
+              <button class="white-font-style" type="submit">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
