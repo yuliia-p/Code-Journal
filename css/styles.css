@@ -34,6 +34,14 @@ label {
   font-size: 1rem;
 }
 
+.photo {
+  width: 100%;
+
+  /* object-fit: cover; */
+
+  /* max-height: 300px; */
+}
+
 .input-slyle {
   padding: 10px;
   border: 1px solid lightgray;

@@ -10,7 +10,6 @@ function photoUpload(event) {
 var elEntryForm = document.querySelector('#journal-form');
 
 elEntryForm.addEventListener('submit', formSubmit);
-var nextEntryId = 1;
 
 function formSubmit(event) {
   event.preventDefault();
@@ -18,8 +17,11 @@ function formSubmit(event) {
   newObj.title = elEntryForm.elements.title.value;
   newObj.url = elEntryForm.elements.url.value;
   newObj.notes = elEntryForm.elements.notes.value;
-  newObj.nextEntryId = nextEntryId++;
+  newObj.entryId = data.nextEntryId++;
   data.entries.unshift(newObj);
   elImgURL.setAttribute('src', '/images/placeholder-image-square.jpg');
   elEntryForm.reset();
+
 }
+
+// var entries = [];
