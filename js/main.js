@@ -22,6 +22,7 @@ function formSubmit(event) {
   elImgURL.setAttribute('src', '/images/placeholder-image-square.jpg');
   switchView('entries');
   elEntryForm.reset();
+  location.reload();
 }
 
 var viewElements = document.querySelectorAll('.view');
