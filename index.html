@@ -19,15 +19,16 @@
   <header class="white-font-style">
     <div class="container">
       <div class="row">
-        <div class="column-full">
+        <div id="navbar" class="column-full display-inline">
           <h2>Code Journal</h2>
+          <a class="view" data-view="entries" id="entries-button">Entries</a>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div class="container flex">
-      <div data-view="entry-form" id="entry-form">
+    <div class="container ">
+      <div class="view" data-view="entry-form" id="entry-form">
         <form id="journal-form">
           <div class="row">
             <div class="column-full">
@@ -69,10 +70,25 @@
           </div>
           <div class="form-actions button row">
             <div class="column-full">
-              <button class="white-font-style" type="submit">Save</button>
+              <button class="white-font-style save-button"
+              type="submit">Save</button>
             </div>
           </div>
         </form>
+      </div>
+      <div class="view hidden" data-view="entries" id="entries-view">
+        <div>
+          <div class="row header">
+            <h1>Entries</h1>
+            <button data-view="entry-form"
+            class="view white-font-style new-entries-button view"
+            type="submit">New</button>
+          </div>
+          <div>
+            <ul class="list">
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </main>
