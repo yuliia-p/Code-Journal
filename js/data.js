@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* exported data */
 var data = {
   view: 'entry-form',
