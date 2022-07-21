@@ -53,7 +53,7 @@ label {
 
 button {
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 3px;
   border: none;
   padding: 10px 20px;
   margin-top: 10px;
@@ -77,6 +77,12 @@ ul {
   padding: 0;
 }
 
+.fa-solid {
+  /* max-width: 25px; */
+  color: #562b81;
+  padding-top: 5px; /* have to change */
+}
+
 .new-entries-button {
   text-align: end;
 }
@@ -89,8 +95,6 @@ ul {
 .header {
   justify-content: space-between;
   align-items: center;
-
-  /* padding: 0 12px; */
 }
 
 .hidden {
@@ -113,5 +117,9 @@ ul {
 
   li.list-item > h3 {
     margin-top: 0;
+  }
+
+  .icon {
+    max-width: 45px;
   }
 }

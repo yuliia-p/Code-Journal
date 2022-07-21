@@ -23,7 +23,13 @@ function formSubmit(event) {
   switchView('entries');
   elEntryForm.reset();
   var newEntryDom = singleEntry(newObj);
+  newEntryDom.setAttribute('data-entry-id', newObj.entryId);
   listUl.prepend(newEntryDom);
+
+  // console.log('newDomEntr: ', newEntryDom);// is given a data-entry-id attribute indicating which entry it is.
+  // console.log('new entry id for obj: ', newObj.entryId);
+  // console.log('new Obj: ', newObj);
+
 }
 
 var viewElements = document.querySelectorAll('.view');
@@ -56,14 +62,19 @@ function clickToChange(event) {
 }
 
 function singleEntry(entry) {
-
   var listItemEl = document.createElement('li');
+  listItemEl.setAttribute('data-entry-id', entry.entryId);
   listItemEl.className = 'list-item entry';
 
   var imgOfList = document.createElement('img');
   imgOfList.className = 'photo';
   imgOfList.setAttribute('src', entry.url);
   listItemEl.appendChild(imgOfList);
+
+  var iconOfList = document.createElement('i');
+  iconOfList.className = 'icon';
+  iconOfList.setAttribute('class', 'fa-solid fa-pen icon');
+  listItemEl.appendChild(iconOfList);
 
   var headerOfList = document.createElement('h3');
   var h3 = document.createTextNode(entry.title);
@@ -88,3 +99,45 @@ function appendToData() {
   }
   switchView(data.view);
 }
+
+var iconEl = document.querySelector('.icon');
+
+listUl.addEventListener('click', clickUl);
+
+function clickUl(event) {
+  // debugger;
+
+  if (event.target.matches('.icon')) {
+    switchView('entry-form');
+  }
+  var listsElements = document.querySelectorAll('li');
+  for (var i = 0; i < listsElements.length; i++) {
+    for (var x = 0; x < data.entries.length; x++) {
+      var strAtribute = listsElements[i].getAttribute('data-entry-id');
+      var numIdAtribute = Number(strAtribute);
+    } if (numIdAtribute === data.entries[x].entryId) {
+      data.editing = listsElements[i];
+    }
+  }
+}
+
+//     for (var x = 0; x < data.?.length; x++) {
+
+//     }
+
+//     if (numIdAtribute === entry[x].entryId) {
+//     // if so assign it to the data model's editing property
+//       data.editing = listsElements[i]; // ?? not sure
+//     }
+//   }
+// }
+// Find the matching entry object in the data model
+// listsElements.getAttribute('data-entry-id')
+// var data = {
+// view: 'entry-form',
+// entries: [],
+// editing: null,
+// nextEntryId: 1
+//  listsElements.getAttribute('data-entry-id') ==> to number
+//   var
+//   if (listsElements.getAttribute('data-entry-id') === data.entries) {
