@@ -14,6 +14,7 @@ elEntryForm.addEventListener('submit', formSubmit);
 
 function formSubmit(event) {
   event.preventDefault();
+
   var newObj = {};
   newObj.title = elEntryForm.elements.title.value;
   newObj.url = elEntryForm.elements.url.value;
@@ -24,17 +25,43 @@ function formSubmit(event) {
   switchView('entries');
   elEntryForm.reset();
   var newEntryDom = singleEntry(newObj);
-  // newEntryDom.setAttribute('data-entry-id', newObj.entryId);
   listUl.prepend(newEntryDom);
-
   if (data.editing !== null) {
-    // console.log(data.editing);
-    // console.log(newObj);
-
+    var editObj = {};
+    editObj.title = data.editing.title;
+    editObj.url = data.editing.url;
+    editObj.notes = data.editing.notes;
+    editObj.entryId = data.nextEntryId - 1;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === editObj.entryId) {
+        data.entries[i].splice(i - 1, 1, editObj);
+        var listsElements = document.querySelectorAll('li');
+        for (var x = 0; x < listsElements.length; x++) {
+          var toNumber = Number(listsElements[x].getAttribute('data-entry-id'));
+          if (toNumber === editObj.entryId) {
+            var replacedEntryDom = newEntryDom.replaceWith(editObj);
+            listUl.prepend(replacedEntryDom);
+          }
+        }
+      }
+    }
+    // } else {
+    //   newObj.title = elEntryForm.elements.title.value;
+    //   newObj.url = elEntryForm.elements.url.value;
+    //   newObj.notes = elEntryForm.elements.notes.value;
+    //   newObj.entryId = data.nextEntryId;
+    //   data.entries.unshift(newObj);
+    //   elImgURL.setAttribute('src', '/images/placeholder-image-square.jpg');
+    //   switchView('entries');
+    //   elEntryForm.reset();
+    //   // var newEntryDom = singleEntry(newObj);
+    //   listUl.prepend(newEntryDom);
+    // }
+    switchView('entries');
+    elEntryForm.reset();
+    data.editing = null;
   }
-  // else // new obj
 }
-
 var viewElements = document.querySelectorAll('.view');
 
 function switchView(viewName) {
@@ -114,16 +141,15 @@ function clickUl(event) {
   }
   if (event.target.tagName === 'I') {
     var closestIl = event.target.closest('.list-item');
-    // console.log(closestIl); // li data-entry-id=60
     var strAtribute = closestIl.getAttribute('data-entry-id');
     var numIdAtribute = Number(strAtribute);
-    // console.log(numIdAtribute);
     for (var x = 0; x < data.entries.length; x++) {
       if (numIdAtribute === data.entries[x].entryId) {
         data.editing = data.entries[x];
         elEntryForm.elements.title.value = data.editing.title;
         elEntryForm.elements.url.value = data.editing.url;
         elEntryForm.elements.notes.value = data.editing.notes;
+
       }
     }
   }
