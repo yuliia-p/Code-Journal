@@ -9,6 +9,7 @@ function photoUpload(event) {
 }
 
 var elEntryForm = document.querySelector('#journal-form');
+
 elEntryForm.addEventListener('submit', formSubmit);
 
 function formSubmit(event) {
@@ -23,13 +24,15 @@ function formSubmit(event) {
   switchView('entries');
   elEntryForm.reset();
   var newEntryDom = singleEntry(newObj);
-  newEntryDom.setAttribute('data-entry-id', newObj.entryId);
+  // newEntryDom.setAttribute('data-entry-id', newObj.entryId);
   listUl.prepend(newEntryDom);
 
-  // console.log('newDomEntr: ', newEntryDom);// is given a data-entry-id attribute indicating which entry it is.
-  // console.log('new entry id for obj: ', newObj.entryId);
-  // console.log('new Obj: ', newObj);
+  if (data.editing !== null) {
+    // console.log(data.editing);
+    // console.log(newObj);
 
+  }
+  // else // new obj
 }
 
 var viewElements = document.querySelectorAll('.view');
@@ -105,39 +108,23 @@ var iconEl = document.querySelector('.icon');
 listUl.addEventListener('click', clickUl);
 
 function clickUl(event) {
-  // debugger;
 
   if (event.target.matches('.icon')) {
     switchView('entry-form');
   }
-  var listsElements = document.querySelectorAll('li');
-  for (var i = 0; i < listsElements.length; i++) {
+  if (event.target.tagName === 'I') {
+    var closestIl = event.target.closest('.list-item');
+    // console.log(closestIl); // li data-entry-id=60
+    var strAtribute = closestIl.getAttribute('data-entry-id');
+    var numIdAtribute = Number(strAtribute);
+    // console.log(numIdAtribute);
     for (var x = 0; x < data.entries.length; x++) {
-      var strAtribute = listsElements[i].getAttribute('data-entry-id');
-      var numIdAtribute = Number(strAtribute);
-    } if (numIdAtribute === data.entries[x].entryId) {
-      data.editing = listsElements[i];
+      if (numIdAtribute === data.entries[x].entryId) {
+        data.editing = data.entries[x];
+        elEntryForm.elements.title.value = data.editing.title;
+        elEntryForm.elements.url.value = data.editing.url;
+        elEntryForm.elements.notes.value = data.editing.notes;
+      }
     }
   }
 }
-
-//     for (var x = 0; x < data.?.length; x++) {
-
-//     }
-
-//     if (numIdAtribute === entry[x].entryId) {
-//     // if so assign it to the data model's editing property
-//       data.editing = listsElements[i]; // ?? not sure
-//     }
-//   }
-// }
-// Find the matching entry object in the data model
-// listsElements.getAttribute('data-entry-id')
-// var data = {
-// view: 'entry-form',
-// entries: [],
-// editing: null,
-// nextEntryId: 1
-//  listsElements.getAttribute('data-entry-id') ==> to number
-//   var
-//   if (listsElements.getAttribute('data-entry-id') === data.entries) {
