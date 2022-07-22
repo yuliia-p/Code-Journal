@@ -62,6 +62,7 @@ function formSubmit(event) {
     data.editing = null;
   }
 }
+
 var viewElements = document.querySelectorAll('.view');
 
 function switchView(viewName) {
