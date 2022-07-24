@@ -14,53 +14,45 @@ elEntryForm.addEventListener('submit', formSubmit);
 
 function formSubmit(event) {
   event.preventDefault();
+  var newObj = {
+    title: elEntryForm.elements.title.value,
+    url: elEntryForm.elements.url.value,
+    notes: elEntryForm.elements.notes.value
+  };
 
-  var newObj = {};
-  newObj.title = elEntryForm.elements.title.value;
-  newObj.url = elEntryForm.elements.url.value;
-  newObj.notes = elEntryForm.elements.notes.value;
-  newObj.entryId = data.nextEntryId++;
-  data.entries.unshift(newObj);
-  elImgURL.setAttribute('src', '/images/placeholder-image-square.jpg');
-  switchView('entries');
-  elEntryForm.reset();
-  var newEntryDom = singleEntry(newObj);
-  listUl.prepend(newEntryDom);
-  if (data.editing !== null) {
-    var editObj = {};
-    editObj.title = data.editing.title;
-    editObj.url = data.editing.url;
-    editObj.notes = data.editing.notes;
-    editObj.entryId = data.nextEntryId - 1;
-    for (var i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].entryId === editObj.entryId) {
-        data.entries[i].splice(i - 1, 1, editObj);
-        var listsElements = document.querySelectorAll('li');
-        for (var x = 0; x < listsElements.length; x++) {
-          var toNumber = Number(listsElements[x].getAttribute('data-entry-id'));
-          if (toNumber === editObj.entryId) {
-            var replacedEntryDom = newEntryDom.replaceWith(editObj);
-            listUl.prepend(replacedEntryDom);
-          }
-        }
-      }
-    }
-    // } else {
-    //   newObj.title = elEntryForm.elements.title.value;
-    //   newObj.url = elEntryForm.elements.url.value;
-    //   newObj.notes = elEntryForm.elements.notes.value;
-    //   newObj.entryId = data.nextEntryId;
-    //   data.entries.unshift(newObj);
-    //   elImgURL.setAttribute('src', '/images/placeholder-image-square.jpg');
-    //   switchView('entries');
-    //   elEntryForm.reset();
-    //   // var newEntryDom = singleEntry(newObj);
-    //   listUl.prepend(newEntryDom);
-    // }
+  if (!data.editing) {
+    newObj.entryId = data.nextEntryId++;
+
+    data.entries.unshift(newObj);
+    elImgURL.setAttribute('src', '/images/placeholder-image-square.jpg');
+
     switchView('entries');
     elEntryForm.reset();
+    var newEntryDom = singleEntry(newObj);
+    listUl.prepend(newEntryDom);
+  } else {
+    newObj.entryId = data.nextEntryId;
+
+    // UPDATE DATA: find edited element in data entries and assign it new values
+    for (var x = 0; x < data.entries.length; x++) {
+      if (data.editing.entryId === data.entries[x].entryId) {
+        data.entries[x] = newObj;
+      }
+    }
+
+    // UPDATE LI: find li and replace it with new dom element
+    switchView('entries');
+    var listsElements = document.querySelectorAll('li');
+    var entryDom = singleEntry(newObj);
+    for (var i = 0; i < listsElements.length; i++) {
+      if (Number(listsElements[i].getAttribute('data-entry-id')) === newObj.entryId) {
+        var newDom = singleEntry(newObj);
+        listsElements[i].replaceWith(newDom);
+      }
+    }
     data.editing = null;
   }
+
 }
 
 var viewElements = document.querySelectorAll('.view');
@@ -150,7 +142,6 @@ function clickUl(event) {
         elEntryForm.elements.title.value = data.editing.title;
         elEntryForm.elements.url.value = data.editing.url;
         elEntryForm.elements.notes.value = data.editing.notes;
-
       }
     }
   }
