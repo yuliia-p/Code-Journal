@@ -14,29 +14,33 @@ elEntryForm.addEventListener('submit', formSubmit);
 
 function formSubmit(event) {
   event.preventDefault();
+
   var newObj = {
     title: elEntryForm.elements.title.value,
     url: elEntryForm.elements.url.value,
-    notes: elEntryForm.elements.notes.value
+    notes: elEntryForm.elements.notes.value,
+    entryId: data.nextEntryId++
   };
 
   if (!data.editing) {
-    newObj.entryId = data.nextEntryId++;
+    // newObj.entryId = data.nextEntryId++;
 
     data.entries.unshift(newObj);
-    elImgURL.setAttribute('src', '/images/placeholder-image-square.jpg');
 
     switchView('entries');
     elEntryForm.reset();
     var newEntryDom = singleEntry(newObj);
     listUl.prepend(newEntryDom);
   } else {
-    newObj.entryId = data.nextEntryId;
+    newObj.entryId = data.editing.entryId; //
 
     // UPDATE DATA: find edited element in data entries and assign it new values
     for (var x = 0; x < data.entries.length; x++) {
       if (data.editing.entryId === data.entries[x].entryId) {
-        data.entries[x] = newObj;
+        // data.entries[x] = newObj;
+      // if (newObj.entryId === data.entries[x].entryId) {
+        data.entries.splice(x, 1, newObj);
+      // }
       }
     }
 
@@ -50,6 +54,8 @@ function formSubmit(event) {
         listsElements[i].replaceWith(newDom);
       }
     }
+    elImgURL.setAttribute('src', '/images/placeholder-image-square.jpg');
+    elEntryForm.reset();
     data.editing = null;
   }
 
