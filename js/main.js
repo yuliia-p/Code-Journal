@@ -15,15 +15,13 @@ elEntryForm.addEventListener('submit', formSubmit);
 function formSubmit(event) {
   event.preventDefault();
 
-  var newObj = {
-    title: elEntryForm.elements.title.value,
-    url: elEntryForm.elements.url.value,
-    notes: elEntryForm.elements.notes.value,
-    entryId: data.nextEntryId++
-  };
-
   if (!data.editing) {
-    // newObj.entryId = data.nextEntryId++;
+    var newObj = {
+      title: elEntryForm.elements.title.value,
+      url: elEntryForm.elements.url.value,
+      notes: elEntryForm.elements.notes.value,
+      entryId: data.nextEntryId++
+    };
 
     data.entries.unshift(newObj);
 
@@ -32,14 +30,17 @@ function formSubmit(event) {
     var newEntryDom = singleEntry(newObj);
     listUl.prepend(newEntryDom);
   } else {
-    newObj.entryId = data.editing.entryId; //
+    var editObj = {
+      title: elEntryForm.elements.title.value,
+      url: elEntryForm.elements.url.value,
+      notes: elEntryForm.elements.notes.value,
+      entryId: data.editing.entryId
+    };
 
     // UPDATE DATA: find edited element in data entries and assign it new values
     for (var x = 0; x < data.entries.length; x++) {
       if (data.editing.entryId === data.entries[x].entryId) {
-        // data.entries[x] = newObj;
-      // if (newObj.entryId === data.entries[x].entryId) {
-        data.entries.splice(x, 1, newObj);
+        data.entries.splice(x, 1, editObj);
       // }
       }
     }
@@ -47,10 +48,10 @@ function formSubmit(event) {
     // UPDATE LI: find li and replace it with new dom element
     switchView('entries');
     var listsElements = document.querySelectorAll('li');
-    var entryDom = singleEntry(newObj);
+    var entryDom = singleEntry(editObj);
     for (var i = 0; i < listsElements.length; i++) {
-      if (Number(listsElements[i].getAttribute('data-entry-id')) === newObj.entryId) {
-        var newDom = singleEntry(newObj);
+      if (Number(listsElements[i].getAttribute('data-entry-id')) === editObj.entryId) {
+        var newDom = singleEntry(editObj);
         listsElements[i].replaceWith(newDom);
       }
     }
