@@ -39,7 +39,6 @@ label {
 
 .photo {
   max-width: 350px;
-  position: relative;
 }
 
 .input-slyle {
@@ -72,6 +71,7 @@ button {
 
 li.list-item > h3 {
   margin-top: 0;
+  position: relative;
 }
 
 ul {
@@ -80,10 +80,10 @@ ul {
 
 .fa-solid {
   color: #562b81;
-  padding-top: 5px; /* have to change */
+  padding-top: 5px;
   position: relative;
   left: 19rem;
-  top: 20px;
+  top: 1rem;
 }
 
 .new-entries-button {
