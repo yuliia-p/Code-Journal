@@ -129,13 +129,12 @@ function appendToData() {
   switchView(data.view);
 }
 
-var iconEl = document.querySelector('.icon');
-
 listUl.addEventListener('click', clickUl);
 
 function clickUl(event) {
-
+  var imgEl = document.querySelector('.photo');
   if (event.target.matches('.icon')) {
+    // debugger;
     switchView('entry-form');
   }
   if (event.target.tagName === 'I') {
@@ -147,6 +146,7 @@ function clickUl(event) {
         data.editing = data.entries[x];
         elEntryForm.elements.title.value = data.editing.title;
         elEntryForm.elements.url.value = data.editing.url;
+        imgEl.setAttribute('src', data.editing.url);
         elEntryForm.elements.notes.value = data.editing.notes;
       }
     }
