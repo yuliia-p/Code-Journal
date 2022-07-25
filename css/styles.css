@@ -82,8 +82,8 @@ ul {
   color: #562b81;
   padding-top: 5px;
   position: relative;
-  left: 19rem;
-  top: 1rem;
+  position: absolute;
+  right: 5px;
 }
 
 .new-entries-button {
@@ -120,10 +120,5 @@ ul {
 
   li.list-item > h3 {
     margin-top: 0;
-  }
-
-  .fa-solid {
-    position: relative;
-    left: 29rem;
   }
 }

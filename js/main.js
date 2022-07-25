@@ -101,15 +101,15 @@ function singleEntry(entry) {
   imgOfList.setAttribute('src', entry.url);
   listItemEl.appendChild(imgOfList);
 
-  var iconOfList = document.createElement('i');
-  iconOfList.className = 'icon';
-  iconOfList.setAttribute('class', 'fa-solid fa-pen icon');
-  listItemEl.appendChild(iconOfList);
-
   var headerOfList = document.createElement('h3');
   var h3 = document.createTextNode(entry.title);
   headerOfList.appendChild(h3);
   listItemEl.appendChild(headerOfList);
+
+  var iconOfList = document.createElement('i');
+  iconOfList.className = 'icon';
+  iconOfList.setAttribute('class', 'fa-solid fa-pen icon');
+  headerOfList.appendChild(iconOfList);
 
   var textOfList = document.createElement('p');
   var paragraph = document.createTextNode(entry.notes);
