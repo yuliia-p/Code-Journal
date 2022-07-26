@@ -133,6 +133,7 @@ function appendToData() {
 listUl.addEventListener('click', clickUl);
 
 function clickUl(event) {
+  deleteAnchor.className = 'delete-a';
   var imgEl = document.querySelector('.photo');
   if (event.target.matches('.icon')) {
     // debugger;
@@ -149,6 +150,53 @@ function clickUl(event) {
         elEntryForm.elements.url.value = data.editing.url;
         imgEl.setAttribute('src', data.editing.url);
         elEntryForm.elements.notes.value = data.editing.notes;
+      }
+    }
+
+  }
+
+}
+
+var deleteAnchor = document.querySelector('#delete-entry');
+var modal = document.querySelector('.modal');
+
+deleteAnchor.addEventListener('click', deleteA);
+
+function deleteA(event) {
+  if (event.target.matches('.delete-a')) {
+    modal.className = 'modal';
+  }
+}
+
+var cancelButton = document.querySelector('.cancel-button');
+
+cancelButton.addEventListener('click', hideModel);
+
+function hideModel(event) {
+  if (event.target.matches('.cancel-button')) {
+    modal.className = 'modal hidden';
+    deleteAnchor.className = 'delete-a hidden';
+  }
+}
+
+var deleteButton = document.querySelector('.confirm-button');
+
+deleteButton.addEventListener('click', deleteEntry);
+
+function deleteEntry(event) {
+
+  if (event.target.matches('.confirm-button')) {
+
+    for (var x = 0; x < data.entries.length; x++) {
+      if (data.entries[x].entryId === data.editing.entryId) {
+        data.entries.splice(x, 1);
+      }
+    }
+    var listsElements = document.querySelectorAll('li');
+    for (var i = 0; i < listsElements.length; i++) {
+      if (Number(listsElements[i].getAttribute('data-entry-id')) === data.editing.entryId) {
+        listsElements[i].remove();
+
       }
     }
   }
