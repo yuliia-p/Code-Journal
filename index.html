@@ -68,10 +68,28 @@
               class="input-slyle"></textarea>
             </div>
           </div>
-          <div class="form-actions button row">
-            <div class="column-full">
-              <button class="white-font-style save-button"
+          <div class="form-actions row align-items">
+            <div class="column-half flex-basis">
+              <!-- Trigger/Open The Modal -->
+              <div>
+                <a class="delete-a hidden" id="delete-entry">Delete Entry</a>
+              </div>
+            </div>
+            <div class="column-half text-align-rigth flex-basis">
+              <button class="white-font-style"
               type="submit">Save</button>
+            </div>
+
+
+          </div>
+          <div class="modal hidden">
+
+            <div class="modal-content">
+              <p>Are you sure you want to delete this entry?</p>
+              <div class="row space-between">
+                <button class="cancel-button white-font-style">cancel</button>
+                <button class="confirm-button white-font-style">confirm</button>
+              </div>
             </div>
           </div>
         </form>
