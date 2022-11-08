@@ -1,26 +1,31 @@
 body {
-  font-family: "Proza Libre", sans-serif;
+  font-family: Montserrat, sans-serif;
   background-color: rgb(244, 244, 244);
 }
 
 a {
-  font-family: "Open Sans", sans-serif;
   color: white;
   text-decoration: none;
-  margin: 30px;
 }
 
 h1 {
   font-weight: bold;
   font-size: 1.5rem;
-  margin: 10px 0;
+  text-align: center;
+  padding: 2rem 0;
+  margin: 0;
 }
 
 h2 {
   padding: 20px 0;
   font-weight: 100;
-  font-size: 1.1rem;
+  font-size: 2rem;
   margin: 0;
+  flex-basis: 80%;
+}
+
+img {
+  margin: auto;
 }
 
 label,
@@ -39,16 +44,18 @@ label {
 
 .photo {
   max-width: 350px;
+  border-radius: 50%;
 }
 
 .input-slyle {
   padding: 10px;
   border: 1px solid lightgray;
+  border-radius: 0.5rem;
 }
 
 .white-font-style {
   color: white;
-  background-color: #562b81;
+  background-color: #1c1920;
 }
 
 button {
@@ -75,7 +82,7 @@ ul {
 }
 
 .fa-solid {
-  color: #562b81;
+  color: #1c1920;
   padding-top: 5px;
   position: relative;
   position: absolute;
@@ -88,7 +95,7 @@ ul {
 
 .display-inline {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .header {
@@ -154,6 +161,10 @@ a.delete-a {
 }
 
 @media only screen and (min-width: 768px) {
+  h2 {
+    flex-basis: 40%;
+  }
+
   .flex {
     display: flex;
   }

@@ -136,7 +136,6 @@ function clickUl(event) {
   deleteAnchor.className = 'delete-a';
   var imgEl = document.querySelector('.photo');
   if (event.target.matches('.icon')) {
-    // debugger;
     switchView('entry-form');
   }
   if (event.target.tagName === 'I') {
