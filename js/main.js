@@ -135,7 +135,6 @@ listUl.addEventListener('click', clickUl);
 function clickUl(event) {
   var imgEl = document.querySelector('.photo');
   if (event.target.matches('.icon')) {
-    // debugger;
     switchView('entry-form');
   }
   if (event.target.tagName === 'I') {
