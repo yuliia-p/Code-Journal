@@ -1,3 +1,10 @@
-# code-journal
+# Code Journal
 
-An HTML, CSS, and JavaScript journal app.
+Simple HTML, CSS, and JavaScript journal app.
+
+<p align="middle">
+  <img src="images/Screenshot_1.png" width="600">
+</p>
+<p align="middle">
+  <img src="images/Screenshot_2.png" width="600">
+</p>
