@@ -28,7 +28,25 @@
     padding: 0 0.75rem;
   }
 
+  h2 {
+    flex-basis: 40%;
+  }
+
+  .flex {
+    display: flex;
+  }
+
   .column-half {
     width: 50%;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  li {
+    flex-basis: calc(100% / 3);
   }
 }
