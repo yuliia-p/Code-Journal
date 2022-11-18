@@ -1,11 +1,19 @@
-body {
+* {
   font-family: Montserrat, sans-serif;
-  background-color: rgb(244, 244, 244);
+}
+
+body {
+  background-color: rgb(255, 255, 255);
 }
 
 a {
   color: white;
   text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 h1 {
@@ -160,13 +168,19 @@ a.delete-a {
   flex-basis: 50%;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 768px) {
-  h2 {
-    flex-basis: 40%;
+  h3,
+  p {
+    text-align: center;
   }
 
-  .flex {
-    display: flex;
+  i {
+    color: rgb(141, 141, 141);
+    font-size: 0.85rem;
   }
 
   .list-item {
