@@ -2,7 +2,7 @@
 
 Simple HTML, CSS, and JavaScript journal app.
 
-##Links
+## Links
 
 Live Site [URL](https://yuliia-p.github.io/code-journal/)
 
